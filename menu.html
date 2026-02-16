@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MENU & PRICE | an・rata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Zen+Maru+Gothic:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Zen Maru Gothic', sans-serif;
+        }
+
+        .text-handwriting {
+            font-family: 'Zen Maru Gothic', cursive;
+        }
+
+        .text-grayscale-900 {
+            color: #0F172A;
+        }
+
+        .bg-grayscale-50 {
+            background-color: #F8FAFC;
+        }
+
+        .bg-grayscale-900 {
+            background-color: #0F172A;
+        }
+
+        .border-grayscale-200 {
+            border-color: #E2E8F0;
+        }
+
+        /* Hide scrollbars but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Marquee Animation for Mobile */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @media (min-width: 768px) {
+            .animate-marquee {
+                animation: none;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-item {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        #mobile-menu-overlay.active .mobile-menu-item {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-grayscale-50 text-slate-800 pb-24 md:pb-0">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-grayscale-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-grayscale-900 shrink-0">an・rata</a>
+                <span
+                    class="text-[8px] md:text-[10px] text-slate-400 font-medium tracking-wider border-l border-slate-200 pl-2 md:pl-4 leading-tight py-0.5">
+                    和歌山市の大人女性のため<br class="block md:hidden">個室空間のサロン
+                </span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="concept.html" class="text-slate-500">CONCEPT</a>
+                <a href="menu.html" class="text-grayscale-900">MENU</a>
+                <a href="recruit.html" class="text-slate-500">RECRUIT</a>
+                <a href="news.html" class="text-slate-500">NEWS</a>
+                <a href="#" class="text-grayscale-900 hover:text-slate-500 transition-colors">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+            <div class="flex items-center md:hidden gap-2">
+                <a href="#" class="p-2 text-grayscale-900">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <button id="mobile-menu-btn" class="p-2 text-grayscale-900 z-[60] relative">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6 transition-transform"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 transition-transform hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[55] bg-white invisible opacity-0 md:hidden">
+        <!-- Close Button inside Overlay -->
+        <button id="overlay-close-btn"
+            class="absolute top-12 right-4 p-2 text-grayscale-900 flex items-center gap-1 font-bold">
+            <span class="text-[10px] tracking-widest uppercase">Close</span>
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <div class="flex flex-col h-full pt-32 px-8">
+            <div class="space-y-8 text-center">
+                <div class="mobile-menu-item" style="transition-delay: 0.1s;">
+                    <a href="concept.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">CONCEPT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">コンセプト</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.2s;">
+                    <a href="menu.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">MENU</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">メニュー</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.3s;">
+                    <a href="recruit.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">RECRUIT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">採用情報</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.4s;">
+                    <a href="news.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">NEWS</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">お知らせ</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pb-16 text-center mobile-menu-item" style="transition-delay: 0.5s;">
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="#"
+                        class="w-12 h-12 rounded-full border border-grayscale-200 flex items-center justify-center text-grayscale-900">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                </div>
+                <p class="text-[10px] text-slate-400 tracking-widest uppercase">Group Stores</p>
+                <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-slate-600">
+                    <a href="https://www.anrata.tech/">an・rata</a>
+                    <span>eye beauty nicol</span>
+                    <span>lilou</span>
+                    <span>enne eyes</span>
+                    <span>REST</span>
+                    <span>SSIN STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-24 pb-20 px-4">
+        <div class="max-w-6xl mx-auto">
+            <header class="text-center mb-20">
+                <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-1 block">Menu & Price</span>
+                <h1 class="text-4xl font-bold text-grayscale-900 italic tracking-tight">メニューと料金。</h1>
+            </header>
+
+            <!-- Price List -->
+            <section class="mb-24 space-y-20">
+                <!-- Hair Quality Improvement / 髪質改善 -->
+                <div>
+                    <div class="mb-10">
+                        <h2
+                            class="text-2xl font-bold border-b-2 border-grayscale-900 pb-2 flex items-center gap-3 italic tracking-tight">
+                            <i data-lucide="sparkles" class="w-6 h-6 not-italic"></i> 髪質改善メニュー
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-2">※LINE予約でお得な料金＆特典をご用意しております</p>
+                    </div>
+
+                    <div class="space-y-12">
+                        <!-- Color -->
+                        <div>
+                            <h3
+                                class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-8 h-px bg-slate-200"></span> Color / カラー
+                            </h3>
+                            <div class="grid gap-6">
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3">
+                                            <h4 class="font-bold text-grayscale-900 text-lg">髪質改善カラーエステ</h4>
+                                            <span
+                                                class="bg-grayscale-900 text-white text-[10px] px-2 py-0.5 rounded-full font-bold tracking-tighter">人気No.1</span>
+                                        </div>
+                                        <p class="text-sm text-slate-500">内側から潤いを与える、当店のスタンダードカラー</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥15,400</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶ケラチンカラー</h4>
+                                        <p class="text-sm text-slate-500">ケラチン補給で、扱いやすい艶やかな仕上がりへ</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥17,600</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶プレミアムケラチンカラー</h4>
+                                        <p class="text-sm text-slate-500">最高峰のケア成分で、持続力と質感を最大化</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥18,700</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Straight -->
+                        <div>
+                            <h3
+                                class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-8 h-px bg-slate-200"></span> Straight / 縮毛矯正
+                            </h3>
+                            <div class="grid gap-6">
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">髪質改善ストレートエステ</h4>
+                                        <p class="text-sm text-slate-500">自然な柔らかさを残したまま、しっかりクセを解消</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥26,400</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶ケラチンストレート</h4>
+                                        <p class="text-sm text-slate-500">ダメージを抑えつつ、潤いのあるストレートヘアへ</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥33,000</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶プレミアムケラチンストレート</h4>
+                                        <p class="text-sm text-slate-500">贅沢な成分で、シルクのような手触りを実現</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥35,200</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Treatment -->
+                        <div>
+                            <h3
+                                class="text-lg font-bold text-slate-400 mb-6 uppercase tracking-widest flex items-center gap-2">
+                                <span class="w-8 h-px bg-slate-200"></span> Treatment / トリートメント
+                            </h3>
+                            <div class="grid gap-6">
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">髪質改善トリートメント</h4>
+                                        <p class="text-sm text-slate-500">髪の土台から整え、健康的な美しさへ導きます</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥13,750</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶ケラチントリートメント</h4>
+                                        <p class="text-sm text-slate-500">まとまりにくい髪を、扱いやすい艶髪へ改善</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥14,300</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-4">
+                                    <div>
+                                        <h4 class="font-bold text-grayscale-900 text-lg">形状記憶プレミアムケラチントリートメント</h4>
+                                        <p class="text-sm text-slate-500">持続性に優れた、集中髪質改善ケア</p>
+                                    </div>
+                                    <p class="font-bold text-xl text-grayscale-900">¥16,500</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standard Menu / スタンダードメニュー -->
+                <div>
+                    <div class="mb-10">
+                        <h2 class="text-2xl font-bold border-b-2 border-grayscale-900 pb-2 flex items-center gap-3">
+                            <i data-lucide="scissors" class="w-6 h-6"></i> スタンダードメニュー
+                        </h2>
+                        <p class="text-xs text-slate-400 mt-2">※こちらの料金は正規料金になります</p>
+                    </div>
+
+                    <div class="grid gap-x-12 gap-y-10 md:grid-cols-2">
+                        <!-- Left Column -->
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <p class="font-bold text-grayscale-900">カット</p>
+                                <p class="font-bold">¥4,730</p>
+                            </div>
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <p class="font-bold text-grayscale-900">カラー</p>
+                                <p class="font-bold">¥7,480</p>
+                            </div>
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <p class="font-bold text-grayscale-900">デザインパーマ</p>
+                                <p class="font-bold">¥7,480</p>
+                            </div>
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <p class="font-bold text-grayscale-900">ヘッドスパ</p>
+                                <p class="font-bold">¥3,300</p>
+                            </div>
+                        </div>
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <div class="flex flex-col">
+                                    <p class="font-bold text-grayscale-900">ミルボンAujua 2STEP</p>
+                                    <span class="text-[10px] text-slate-400 tracking-tighter">トリートメント</span>
+                                </div>
+                                <p class="font-bold">¥2,530</p>
+                            </div>
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <div class="flex flex-col">
+                                    <p class="font-bold text-grayscale-900">ミルボンAujua 4STEP</p>
+                                    <span class="text-[10px] text-slate-400 tracking-tighter">トリートメント</span>
+                                </div>
+                                <p class="font-bold">¥4,730</p>
+                            </div>
+                            <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                <div class="flex flex-col">
+                                    <p class="font-bold text-grayscale-900">ミルボンAujua 5STEP</p>
+                                    <span class="text-[10px] text-slate-400 tracking-tighter">トリートメント</span>
+                                </div>
+                                <p class="font-bold">¥5,830</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                    <p class="font-bold text-grayscale-900 text-sm">毛穴洗浄</p>
+                                    <p class="font-bold text-sm">¥880</p>
+                                </div>
+                                <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
+                                    <p class="font-bold text-grayscale-900 text-sm">ケアプロ</p>
+                                    <p class="font-bold text-sm">¥1,430</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Partner Services -->
+            <section class="mb-24">
+                <div class="text-center mb-12">
+                    <span class="text-sm font-bold text-slate-400 tracking-widest uppercase">Other Services</span>
+                    <h2 class="text-3xl font-bold mt-2 text-grayscale-900">こちらもおすすめ</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Eyebrow -->
+                    <a href="#" class="group relative h-48 rounded-[2rem] overflow-hidden shadow-lg block">
+                        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
+                            class="absolute inset-0 w-full h-full object-cover grayscale brightness-50 group-hover:scale-105 transition-all duration-700"
+                            alt="Eyebrow">
+                        <div class="relative h-full flex flex-col items-center justify-center text-white">
+                            <h3 class="text-2xl font-bold mb-2">Eyebrow Design</h3>
+                            <p class="text-sm text-white/70">眉毛スタイリング（別店舗）</p>
+                        </div>
+                    </a>
+                    <!-- Eyelash -->
+                    <a href="#" class="group relative h-48 rounded-[2rem] overflow-hidden shadow-lg block">
+                        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=800&q=80"
+                            class="absolute inset-0 w-full h-full object-cover grayscale brightness-50 group-hover:scale-105 transition-all duration-700"
+                            alt="Eyelash">
+                        <div class="relative h-full flex flex-col items-center justify-center text-white">
+                            <h3 class="text-2xl font-bold mb-2">Eyelash Extension</h3>
+                            <p class="text-sm text-white/70">マツエク・ラッシュリフト（別店舗）</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <!-- Q&A Section -->
+            <section class="py-24 border-t border-grayscale-200">
+                <div class="text-center mb-16">
+                    <span class="text-sm font-bold text-slate-400 tracking-widest uppercase">Q & A</span>
+                    <h2 class="text-3xl font-bold mt-2 text-grayscale-900">よくある質問</h2>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-6">
+                    <!-- Q1 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">初めてでも安心して行けますか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>はい。初回はカウンセリングの時間を大切にしています。髪の履歴やお悩みを丁寧に伺い、無理な提案は行いません。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">どんな年代の方が多いですか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>落ち着いた空間を好まれる大人の女性が多く通われています。年齢による髪質変化のお悩みを持つ方にも選ばれています。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">髪質改善は何回くらいで実感できますか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>髪の状態によりますが、多くの方が初回から手触りの変化を感じられます。継続することで、扱いやすさと安定感が高まります。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">強い営業や追加メニューの提案はありますか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>ありません。今の髪に必要なことだけをお伝えします。ご納得いただいた内容のみ施術を行います。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">静かに過ごせますか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>はい。全席完全個室落ち着いた雰囲気を大切にしており、必要以上の会話は行いません。ゆっくり過ごしたい方にも安心してご利用いただけます。JAZZなどゆったりとしたBGMになっております
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">スタイリングが苦手でも大丈夫ですか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>大丈夫です。ご自宅で無理なく再現できるよう、簡単な方法だけをお伝えしています。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">どれくらいの頻度で通うのがおすすめですか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>髪の状態にもよりますが、無理のない周期をご提案しています。継続を前提にした通い方を大切にしています。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-grayscale-100">
+                        <div class="flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-grayscale-900 text-white flex items-center justify-center font-bold italic text-sm">Q</span>
+                            <h3 class="font-bold text-lg text-grayscale-900">予約は取りにくいですか</h3>
+                        </div>
+                        <div class="mt-4 pl-12 flex gap-4">
+                            <span
+                                class="flex-shrink-0 w-8 h-8 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold italic text-sm">A</span>
+                            <div class="text-slate-600 leading-relaxed">
+                                <p>事前のご予約をおすすめしています。余裕を持った施術時間を確保するため、当日のご案内が難しい場合があります。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Group Services Section -->
+    <section class="py-16 px-4 bg-grayscale-50 border-t border-grayscale-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Our Network</span>
+                    <h2 class="text-2xl font-bold mt-1 text-grayscale-900 italic tracking-tight">GROUP SERVICES</h2>
+                </div>
+                <p class="text-xs text-slate-500 font-medium">和歌山を中心に展開する、美と癒やしの系列店のご案内です。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                <!-- an rata -->
+                <a href="https://www.anrata.tech/" target="_blank"
+                    class="group block border-b border-grayscale-200 pb-6 hover:border-grayscale-900 transition-colors">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900 group-hover:text-grayscale-900">an・rata <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">和歌山市店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">大人女性のための、髪質改善に特化した完全個室サロン。</p>
+                </a>
+
+                <!-- eye beauty nicol -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">eye beauty nicol</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">理想の目元を叶える、和歌山屈指 suspension-aiサロン。</p>
+                </div>
+
+                <!-- lilou -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">lilou</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">一人ひとりの個性を引き出す、髪質改善ヘアサロン。</p>
+                </div>
+
+                <!-- enne eyes -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">enne eyes</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">あなたの「縁」を大切にする、パーソナライズ・アイビューティー。</p>
+                </div>
+
+                <!-- REST -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">REST</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Relaxation</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最高の休息をご提案。リラクゼーション・スパメニュー。</p>
+                </div>
+
+                <!-- SSIN STUDIO -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">SSIN STUDIO <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">北九州小倉店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Artmake
+                            / Brow</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最先端のアートメイク技術で、洗練された美しさを。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PC Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-grayscale-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-3xl font-bold text-grayscale-900 mb-8 tracking-tighter">an・rata</div>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-grayscale-900 transition-colors">HOME</a>
+                <a href="concept.html" class="hover:text-grayscale-900 transition-colors">CONCEPT</a>
+                <a href="menu.html" class="hover:text-grayscale-900 transition-colors">MENU</a>
+                <a href="recruit.html" class="hover:text-grayscale-900 transition-colors">RECRUIT</a>
+                <a href="news.html" class="hover:text-grayscale-900 transition-colors">NEWS</a>
+            </div>
+            <p class="text-xs text-slate-400">&copy; 2026 an・rata All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Footer Action Fixed (Mobile) -->
+    <div class="fixed bottom-0 left-0 w-full z-40 md:hidden flex border-t border-gray-200 bg-white/90 backdrop-blur-md">
+        <a href="tel:000-000-0000"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="phone" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">CALL / 電話予約</span>
+        </a>
+        <a href="#"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="calendar" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">WEB / ネット予約</span>
+        </a>
+        <a href="recruit.html" class="flex-1 py-4 flex flex-col items-center justify-center bg-slate-400 text-white">
+            <i data-lucide="users" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">RECRUIT / 見学</span>
+        </a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const overlayCloseBtn = document.getElementById('overlay-close-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenuOverlay.classList.add('active');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        overlayCloseBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking links
+        const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+                isMenuOpen = false;
+            });
+        });
+    </script>
+</body>
+
+</html>

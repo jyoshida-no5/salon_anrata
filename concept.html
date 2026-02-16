@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONCEPT | an・rata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Zen+Maru+Gothic:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Zen Maru Gothic', sans-serif;
+        }
+
+        .text-handwriting {
+            font-family: 'Zen Maru Gothic', cursive;
+        }
+
+        .bg-grayscale-50 {
+            background-color: #F8FAFC;
+        }
+
+        .bg-grayscale-100 {
+            background-color: #F1F5F9;
+        }
+
+        .text-grayscale-900 {
+            color: #0F172A;
+        }
+
+        .border-grayscale-100 {
+            border-color: #F1F5F9;
+        }
+
+        .border-grayscale-200 {
+            border-color: #E2E8F0;
+        }
+
+        /* Hide scrollbars but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Marquee Animation for Mobile */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @media (min-width: 768px) {
+            .animate-marquee {
+                animation: none;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-item {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        #mobile-menu-overlay.active .mobile-menu-item {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-grayscale-50 text-slate-800 pb-24 md:pb-0">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-grayscale-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-grayscale-900 shrink-0">an・rata</a>
+                <span
+                    class="text-[8px] md:text-[10px] text-slate-400 font-medium tracking-wider border-l border-slate-200 pl-2 md:pl-4 leading-tight py-0.5">
+                    和歌山市の大人女性のため<br class="block md:hidden">個室空間のサロン
+                </span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="concept.html" class="text-grayscale-900">CONCEPT</a>
+                <a href="menu.html" class="hover:text-grayscale-900 transition-colors">MENU</a>
+                <a href="recruit.html" class="hover:text-grayscale-900 transition-colors">RECRUIT</a>
+                <a href="news.html" class="hover:text-grayscale-900 transition-colors">NEWS</a>
+                <a href="#" class="text-grayscale-900 hover:text-slate-500 transition-colors">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+            <div class="flex items-center md:hidden gap-2">
+                <a href="#" class="p-2 text-grayscale-900">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <button id="mobile-menu-btn" class="p-2 text-grayscale-900 z-[60] relative">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6 transition-transform"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 transition-transform hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[55] bg-white invisible opacity-0 md:hidden">
+        <!-- Close Button inside Overlay -->
+        <button id="overlay-close-btn"
+            class="absolute top-12 right-4 p-2 text-grayscale-900 flex items-center gap-1 font-bold">
+            <span class="text-[10px] tracking-widest uppercase">Close</span>
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <div class="flex flex-col h-full pt-32 px-8">
+            <div class="space-y-8 text-center">
+                <div class="mobile-menu-item" style="transition-delay: 0.1s;">
+                    <a href="concept.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">CONCEPT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">コンセプト</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.2s;">
+                    <a href="menu.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">MENU</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">メニュー</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.3s;">
+                    <a href="recruit.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">RECRUIT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">採用情報</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.4s;">
+                    <a href="news.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">NEWS</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">お知らせ</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pb-16 text-center mobile-menu-item" style="transition-delay: 0.5s;">
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="#"
+                        class="w-12 h-12 rounded-full border border-grayscale-200 flex items-center justify-center text-grayscale-900">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                </div>
+                <p class="text-[10px] text-slate-400 tracking-widest uppercase">Group Stores</p>
+                <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-slate-600">
+                    <a href="https://www.anrata.tech/">an・rata</a>
+                    <span>eye beauty nicol</span>
+                    <span>lilou</span>
+                    <span>enne eyes</span>
+                    <span>REST</span>
+                    <span>SSIN STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Header (Hero) -->
+    <header class="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden pt-16">
+        <div class="absolute inset-0 z-0 bg-grayscale-900">
+            <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=80"
+                alt="Concept Hero" class="w-full h-full object-cover grayscale brightness-50">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <span
+                class="text-xs md:text-sm font-bold tracking-[0.3em] text-white/60 uppercase mb-4 block">Concept</span>
+            <h1 class="text-3xl md:text-5xl font-bold text-white tracking-tight">
+                髪と人生に、<br class="md:hidden">一歩先の答えを。
+            </h1>
+        </div>
+    </header>
+
+    <!-- Owner Message Section -->
+    <section class="py-16 md:py-24 px-4 bg-white">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-4 block">Owner
+                        Message</span>
+                    <h2 class="text-2xl md:text-3xl font-bold text-grayscale-900 mb-8 leading-tight">
+                        騒がしい美容室が苦手な大人女性へ。<br>個室空間で、髪を整えながら、上品なヘアデザインをご提案します。
+                    </h2>
+                    <div class="space-y-6 text-slate-600 leading-relaxed">
+                        <p>
+                            an・rata（アンラタ）は、落ち着いた個室空間でゆっくり過ごせる大人女性のためのサロンです。
+                        </p>
+                        <p>
+                            必要以上に話しかけない配慮、丁寧なカウンセリング、そして髪の状態を見極めた施術。年齢とともに変わる髪質、うねり、広がり、艶の低下。その一つ一つに向き合い、扱いやすさと自然な美しさを大切に仕上げます。
+                        </p>
+                    </div>
+                    <div class="mt-10">
+                        <p class="text-grayscale-900 font-bold">代表 / Owner</p>
+                        <p class="text-xl font-bold tracking-widest mt-1">furukubo shunsuke</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 rounded-[2.5rem] overflow-hidden shadow-2xl">
+                    <img src="assets/furukubo.avif" alt="Owner" class="w-full h-full object-cover grayscale">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="py-16 md:py-24 px-4 bg-grayscale-50">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-4 block">Our Commitment</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-grayscale-900 mb-12">an・rataのこだわり</h2>
+            <div class="grid md:grid-cols-2 gap-16 text-left items-center">
+                <!-- Item 1: Space -->
+                <div class="order-1 md:order-1 rounded-[2rem] overflow-hidden shadow-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80"
+                        alt="Space commitment" class="w-full h-full object-cover grayscale">
+                </div>
+                <div class="order-2 md:order-2">
+                    <h3 class="text-xl font-bold text-grayscale-900 mb-6 flex items-center gap-3 leading-snug">
+                        <span class="text-3xl text-slate-200">01</span> 【空間】完全個室×フルフラットによる「大人のための極上リラックス空間」
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        扉付きの全席完全個室設計。周囲の視線や声を気にせず、心からリラックスして悩みも相談できるプライベートな環境を整えています。首や腰に負担をかけないフルフラットのシャンプー台も完備。
+                    </p>
+                </div>
+
+                <!-- Item 2: Technology -->
+                <div class="order-3 md:order-4 rounded-[2rem] overflow-hidden shadow-lg aspect-square">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80"
+                        alt="Technology commitment" class="w-full h-full object-cover grayscale">
+                </div>
+                <div class="order-4 md:order-3">
+                    <h3 class="text-xl font-bold text-grayscale-900 mb-6 flex items-center gap-3 leading-snug">
+                        <span class="text-3xl text-slate-200">02</span> 【技術】根本から美しさを育む「独自設計の髪質改善エステ」
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        その場しのぎではない「育てる髪質改善」を掲げています。15工程に及ぶ丁寧なプロセスと、薬剤を使わないノーダメージ処方により、繰り返すほどに扱いやすく艶やかな髪質へと導きます。
+                    </p>
+                </div>
+
+                <!-- Item 3: Proposal -->
+                <div class="order-5 md:order-5 rounded-[2rem] overflow-hidden shadow-lg aspect-square">
+                    <img src="assets/advice.jpg" alt="Proposal commitment" class="w-full h-full object-cover grayscale">
+                </div>
+                <div class="order-6 md:order-6">
+                    <h3 class="text-xl font-bold text-grayscale-900 mb-6 flex items-center gap-3 leading-snug">
+                        <span class="text-3xl text-slate-200">03</span> 【提案】再現性と似合わせを両立する「徹底したカウンセリング」
+                    </h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        ライフスタイルや過去の施術履歴まで深掘りする5ステップのカウンセリングを実施。「乾かすだけで決まる」という実用的な扱いやすさと、一人ひとりにフィットする似合わせデザインを両立させます。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staff Section -->
+    <section class="py-16 md:py-24 px-4 bg-grayscale-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-4 block">Our Team</span>
+                <h2 class="text-3xl font-bold text-grayscale-900">スタッフ紹介</h2>
+            </div>
+            <div class="grid grid-cols-3 gap-4 md:gap-12">
+                <!-- Staff 1 -->
+                <div class="group text-center">
+                    <div
+                        class="aspect-[4/5] rounded-xl md:rounded-[2rem] overflow-hidden mb-4 shadow-md border-2 border-white transition-all group-hover:shadow-2xl">
+                        <img src="assets/furukubo.avif" alt="Staff 1"
+                            class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <p class="text-[10px] md:text-sm font-bold text-slate-400 tracking-widest uppercase mb-1">Director
+                    </p>
+                    <h3 class="text-sm md:text-xl font-bold text-grayscale-900">furukubo shunsuke</h3>
+                </div>
+                <!-- Staff 2 -->
+                <div class="group text-center">
+                    <div
+                        class="aspect-[4/5] rounded-xl md:rounded-[2rem] overflow-hidden mb-4 shadow-md border-2 border-white transition-all group-hover:shadow-2xl">
+                        <img src="assets/yukina.png" alt="Staff 2"
+                            class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <p class="text-[10px] md:text-sm font-bold text-slate-400 tracking-widest uppercase mb-1">Stylist
+                    </p>
+                    <h3 class="text-sm md:text-xl font-bold text-grayscale-900">yukina</h3>
+                </div>
+                <!-- Staff 3 -->
+                <div class="group text-center">
+                    <div
+                        class="aspect-[4/5] rounded-xl md:rounded-[2rem] overflow-hidden mb-4 shadow-md border-2 border-white transition-all group-hover:shadow-2xl">
+                        <img src="assets/manami.png" alt="Staff 3"
+                            class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <p class="text-[10px] md:text-sm font-bold text-slate-400 tracking-widest uppercase mb-1">Stylist
+                    </p>
+                    <h3 class="text-sm md:text-xl font-bold text-grayscale-900">manami</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Information Section -->
+    <section class="py-16 md:py-24 px-4 bg-white border-t border-grayscale-100">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-4 block">Shop Info</span>
+                <h2 class="text-3xl font-bold text-grayscale-900">店舗情報</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-16">
+                <!-- Address -->
+                <div>
+                    <h3 class="text-lg font-bold text-grayscale-900 mb-6 tracking-widest">住所</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed font-medium">和歌山県和歌山市西大工町 1 番地</p>
+                </div>
+                <!-- TEL / Email -->
+                <div>
+                    <h3 class="text-lg font-bold text-grayscale-900 mb-6 tracking-widest">TEL</h3>
+                    <p class="text-sm text-slate-600 mb-2 font-medium">073-499-5020</p>
+                    <p class="text-sm text-slate-400 italic">info@anrata.com</p>
+                </div>
+                <!-- Reception -->
+                <div>
+                    <h3 class="text-lg font-bold text-grayscale-900 mb-6 tracking-widest">受付時間</h3>
+                    <p class="text-sm text-slate-600 font-medium">10:00 am - 19:00 pm</p>
+                </div>
+            </div>
+
+            <div class="text-center mb-12">
+                <p class="text-xl text-grayscale-900 font-bold tracking-tight">サロン前に12台分の駐車場がございます</p>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div
+                class="bg-gray-50 rounded-[2.5rem] aspect-[16/9] md:aspect-[21/9] flex items-center justify-center border border-grayscale-200 overflow-hidden shadow-inner group cursor-pointer hover:bg-white transition-colors">
+                <div
+                    class="text-slate-300 flex flex-col items-center gap-3 transition-colors group-hover:text-slate-500">
+                    <i data-lucide="map-pin" class="w-10 h-10"></i>
+                    <span class="text-xs font-bold uppercase tracking-widest">Google Map Placeholder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Information Section -->
+    <section class="py-16 md:py-24 px-4 bg-grayscale-50">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-sm font-bold text-slate-400 tracking-widest uppercase mb-4 block">Company
+                    Profile</span>
+                <h2 class="text-3xl font-bold text-grayscale-900">運営会社情報</h2>
+            </div>
+            <div class="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-grayscale-200">
+                <dl class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 border-b border-slate-100 pb-6">
+                        <dt class="font-bold text-grayscale-900">会社名</dt>
+                        <dd class="md:col-span-2 text-slate-600">株式会社Dct</dd>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 border-b border-slate-100 pb-6">
+                        <dt class="font-bold text-grayscale-900">代表者</dt>
+                        <dd class="md:col-span-2 text-slate-600">furukubo shunsuke</dd>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 border-b border-slate-100 pb-6">
+                        <dt class="font-bold text-grayscale-900">設立年</dt>
+                        <dd class="md:col-span-2 text-slate-600">2013年</dd>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 border-b border-slate-100 pb-6">
+                        <dt class="font-bold text-grayscale-900">従業員数</dt>
+                        <dd class="md:col-span-2 text-slate-600">16名</dd>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 border-b border-slate-100 pb-6">
+                        <dt class="font-bold text-grayscale-900">事業内容</dt>
+                        <dd class="md:col-span-2 text-slate-600">美容室経営、ヘアケア製品の開発・販売、アイラッシュサロン運営</dd>
+                    </div>
+                    <div class="pt-4 text-center">
+                        <a href="#"
+                            class="inline-flex items-center gap-2 text-sm font-bold text-grayscale-900 hover:text-slate-500 transition-colors">
+                            詳しくはこちら <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="py-16 px-4 bg-grayscale-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
+                <div class="text-center md:text-left">
+                    <span class="text-sm font-bold tracking-widest text-slate-400 uppercase">Follow Us</span>
+                    <h2 class="text-3xl font-bold mt-2 text-grayscale-900">Instagram</h2>
+                </div>
+                <a href="#"
+                    class="flex items-center gap-2 text-sm font-bold text-grayscale-900 hover:text-slate-500 transition-all">
+                    @an_rata_salon <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Feed 1 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 1"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 2 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 2"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 3 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1620331311520-246422ff83f9?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 3"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 4 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 4"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 5 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f8bc2775?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 5"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 6 -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200">
+                    <img src="https://images.unsplash.com/photo-1492162300225-84111f1aaad5?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 6"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 7 (PC only recommendation) -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200 hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 7"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+                <!-- Feed 8 (PC only recommendation) -->
+                <div
+                    class="aspect-square bg-gray-200 rounded-2xl overflow-hidden group cursor-pointer border border-grayscale-200 hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=400&q=80"
+                        alt="Instagram 8"
+                        class="w-full h-full object-cover grayscale brightness-90 group-hover:scale-110 group-hover:brightness-100 transition-all duration-500">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Group Services Section -->
+    <section class="py-16 px-4 bg-grayscale-50 border-t border-grayscale-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Our Network</span>
+                    <h2 class="text-2xl font-bold mt-1 text-grayscale-900 italic tracking-tight">GROUP SERVICES</h2>
+                </div>
+                <p class="text-xs text-slate-500 font-medium">和歌山を中心に展開する、美と癒やしの系列店のご案内です。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                <!-- an rata -->
+                <a href="https://www.anrata.tech/" target="_blank"
+                    class="group block border-b border-grayscale-200 pb-6 hover:border-grayscale-900 transition-colors">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900 group-hover:text-grayscale-900">an・rata <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">和歌山市店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">大人女性のための、髪質改善に特化した完全個室サロン。</p>
+                </a>
+
+                <!-- eye beauty nicol -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">eye beauty nicol</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">理想の目元を叶える、和歌山屈指のアイサロン。</p>
+                </div>
+
+                <!-- lilou -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">lilou</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">一人ひとりの個性を引き出す、髪質改善ヘアサロン。</p>
+                </div>
+
+                <!-- enne eyes -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">enne eyes</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">あなたの「縁」を大切にする、パーソナライズ・アイビューティー。</p>
+                </div>
+
+                <!-- REST -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">REST</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Relaxation</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最高の休息をご提案。リラクゼーション・スパメニュー。</p>
+                </div>
+
+                <!-- SSIN STUDIO -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">SSIN STUDIO <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">北九州小倉店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Artmake
+                            / Brow</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最先端のアートメイク技術で、洗練された美しさを。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PC Footer -->
+    <footer class="bg-grayscale-50 pt-20 pb-10 border-t border-grayscale-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-3xl font-bold text-grayscale-900 mb-8 tracking-tighter">an・rata</div>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-grayscale-900 transition-colors">HOME</a>
+                <a href="concept.html" class="hover:text-grayscale-900 transition-colors text-grayscale-900">CONCEPT</a>
+                <a href="menu.html" class="hover:text-grayscale-900 transition-colors">MENU</a>
+                <a href="recruit.html" class="hover:text-grayscale-900 transition-colors">RECRUIT</a>
+                <a href="news.html" class="hover:text-grayscale-900 transition-colors">NEWS</a>
+            </div>
+            <p class="text-xs text-slate-400">&copy; 2026 an・rata All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Footer Action Fixed (Mobile) -->
+    <div class="fixed bottom-0 left-0 w-full z-40 md:hidden flex border-t border-gray-200 bg-white/90 backdrop-blur-md">
+        <a href="tel:000-000-0000"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="phone" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">CALL / 電話予約</span>
+        </a>
+        <a href="#"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="calendar" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">WEB / ネット予約</span>
+        </a>
+        <a href="recruit.html" class="flex-1 py-4 flex flex-col items-center justify-center bg-slate-400 text-white">
+            <i data-lucide="users" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">RECRUIT / 見学</span>
+        </a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const overlayCloseBtn = document.getElementById('overlay-close-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenuOverlay.classList.add('active');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        overlayCloseBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking links
+        const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+                isMenuOpen = false;
+            });
+        });
+    </script>
+</body>
+
+</html>

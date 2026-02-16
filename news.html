@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS & TOPICS | an・rata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Zen+Maru+Gothic:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Zen Maru Gothic', sans-serif;
+        }
+
+        .text-handwriting {
+            font-family: 'Zen Maru Gothic', cursive;
+        }
+
+        .text-grayscale-900 {
+            color: #0F172A;
+        }
+
+        .bg-grayscale-50 {
+            background-color: #F8FAFC;
+        }
+
+        .bg-grayscale-900 {
+            background-color: #0F172A;
+        }
+
+        .border-grayscale-200 {
+            border-color: #E2E8F0;
+        }
+
+        /* Hide scrollbars but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Marquee Animation for Mobile */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        @media (min-width: 768px) {
+            .animate-marquee {
+                animation: none;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        #mobile-menu-overlay {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-item {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        #mobile-menu-overlay.active .mobile-menu-item {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-grayscale-50 text-slate-800 pb-24 md:pb-0">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="index.html" class="text-2xl font-bold tracking-tighter text-grayscale-900 shrink-0">an・rata</a>
+                <span
+                    class="text-[8px] md:text-[10px] text-slate-400 font-medium tracking-wider border-l border-slate-200 pl-2 md:pl-4 leading-tight py-0.5">
+                    和歌山市の大人女性のため<br class="block md:hidden">個室空間のサロン
+                </span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="concept.html" class="text-slate-500">CONCEPT</a>
+                <a href="menu.html" class="text-slate-500">MENU</a>
+                <a href="recruit.html" class="text-slate-500">RECRUIT</a>
+                <a href="news.html" class="text-grayscale-900">NEWS</a>
+                <a href="#" class="text-grayscale-900 hover:text-slate-500 transition-colors">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                </a>
+            </div>
+            <div class="flex items-center md:hidden gap-2">
+                <a href="#" class="p-2 text-grayscale-900">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <button id="mobile-menu-btn" class="p-2 text-grayscale-900 z-[60] relative">
+                    <i data-lucide="menu" id="menu-icon" class="w-6 h-6 transition-transform"></i>
+                    <i data-lucide="x" id="close-icon" class="w-6 h-6 transition-transform hidden"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[55] bg-white invisible opacity-0 md:hidden">
+        <!-- Close Button inside Overlay -->
+        <button id="overlay-close-btn"
+            class="absolute top-12 right-4 p-2 text-grayscale-900 flex items-center gap-1 font-bold">
+            <span class="text-[10px] tracking-widest uppercase">Close</span>
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <div class="flex flex-col h-full pt-32 px-8">
+            <div class="space-y-8 text-center">
+                <div class="mobile-menu-item" style="transition-delay: 0.1s;">
+                    <a href="concept.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">CONCEPT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">コンセプト</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.2s;">
+                    <a href="menu.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">MENU</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">メニュー</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.3s;">
+                    <a href="recruit.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">RECRUIT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">採用情報</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.4s;">
+                    <a href="news.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">NEWS</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">お知らせ</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pb-16 text-center mobile-menu-item" style="transition-delay: 0.5s;">
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="#"
+                        class="w-12 h-12 rounded-full border border-grayscale-200 flex items-center justify-center text-grayscale-900">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                </div>
+                <p class="text-[10px] text-slate-400 tracking-widest uppercase">Group Stores</p>
+                <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-slate-600">
+                    <a href="https://www.anrata.tech/">an・rata</a>
+                    <span>eye beauty nicol</span>
+                    <span>lilou</span>
+                    <span>enne eyes</span>
+                    <span>REST</span>
+                    <span>SSIN STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[55] bg-white invisible opacity-0 md:hidden">
+        <div class="flex flex-col h-full pt-32 px-8">
+            <div class="space-y-8 text-center">
+                <div class="mobile-menu-item" style="transition-delay: 0.1s;">
+                    <a href="concept.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">CONCEPT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">コンセプト</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.2s;">
+                    <a href="menu.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">MENU</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">メニュー</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.3s;">
+                    <a href="recruit.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">RECRUIT</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">採用情報</p>
+                </div>
+                <div class="mobile-menu-item" style="transition-delay: 0.4s;">
+                    <a href="news.html" class="text-4xl font-bold text-grayscale-900 tracking-tighter">NEWS</a>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-widest">お知らせ</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pb-16 text-center mobile-menu-item" style="transition-delay: 0.5s;">
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="#"
+                        class="w-12 h-12 rounded-full border border-grayscale-200 flex items-center justify-center text-grayscale-900">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                </div>
+                <p class="text-[10px] text-slate-400 tracking-widest uppercase">Group Stores</p>
+                <div class="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-slate-600">
+                    <a href="https://www.anrata.tech/">an・rata</a>
+                    <span>eye beauty nicol</span>
+                    <span>lilou</span>
+                    <span>enne eyes</span>
+                    <span>REST</span>
+                    <span>SSIN STUDIO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="pt-24 pb-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <header class="text-center mb-20">
+                <span class="text-sm font-bold text-slate-400 tracking-widest uppercase">News & Topics</span>
+                <h1 class="text-4xl font-bold mt-4 text-grayscale-900">大切なお知らせ。</h1>
+            </header>
+
+            <!-- Access -->
+            <section class="mb-24">
+                <div class="bg-gray-200 h-80 rounded-3xl mb-8 flex items-center justify-center text-gray-400 italic">
+                    [Google Map Placeholder]
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="font-bold mb-4">店舗情報</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            an・rata (アンラタ)<br>
+                            〒123-4567 東京都〇〇区△△ 1-2-3<br>
+                            TEL: 03-1234-5678<br>
+                            OPEN: 10:00 - 19:00 (火曜定休)
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold mb-4">最寄り駅からのアクセス</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            〇〇線「△△駅」北口より徒歩5分。商店街を抜けてすぐの白い建物です。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dual Action Form -->
+            <section class="grid md:grid-cols-2 gap-8">
+                <!-- Customer -->
+                <div
+                    class="bg-white p-10 rounded-[2.5rem] shadow-sm flex flex-col items-center text-center border border-slate-100">
+                    <div class="w-16 h-16 bg-grayscale-50 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="calendar" class="w-8 h-8 text-grayscale-900"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">お客様のご予約</h3>
+                    <p class="text-sm text-slate-400 mb-8">24時間受け付けております。</p>
+                    <div class="w-full space-y-3">
+                        <a href="#" class="block bg-grayscale-900 text-white py-4 rounded-full font-bold">WEB予約</a>
+                        <a href="#" class="block bg-[#06C755] text-white py-4 rounded-full font-bold">LINEで予約・相談</a>
+                    </div>
+                </div>
+                <!-- Recruit -->
+                <div class="bg-slate-900 p-10 rounded-[2.5rem] shadow-sm flex flex-col items-center text-center">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="users" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-white">見学・求人問い合わせ</h3>
+                    <p class="text-sm text-white/40 mb-8">まずはお話だけでもお気軽に。</p>
+                    <div class="w-full space-y-3">
+                        <a href="#" class="block bg-white text-slate-900 py-4 rounded-full font-bold">応募フォーム</a>
+                        <a href="#"
+                            class="block bg-white/10 text-white border border-white/20 py-4 rounded-full font-bold">LINEで問い合わせ</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Group Services Section -->
+    <section class="py-16 px-4 bg-grayscale-50 border-t border-grayscale-200">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase">Our Network</span>
+                    <h2 class="text-2xl font-bold mt-1 text-grayscale-900 italic tracking-tight">GROUP SERVICES</h2>
+                </div>
+                <p class="text-xs text-slate-500 font-medium">和歌山を中心に展開する、美と癒やしの系列店のご案内です。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+                <!-- an rata -->
+                <a href="https://www.anrata.tech/" target="_blank"
+                    class="group block border-b border-grayscale-200 pb-6 hover:border-grayscale-900 transition-colors">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900 group-hover:text-grayscale-900">an・rata <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">和歌山市店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">大人女性のための、髪質改善に特化した完全個室サロン。</p>
+                </a>
+
+                <!-- eye beauty nicol -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">eye beauty nicol</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">理想の目元を叶える、和歌山屈指のアイサロン。</p>
+                </div>
+
+                <!-- lilou -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">lilou</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Hair
+                            Salon</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">一人ひとりの個性を引き出す、髪質改善ヘアサロン。</p>
+                </div>
+
+                <!-- enne eyes -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">enne eyes</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Eye
+                            Beauty</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">あなたの「縁」を大切にする、パーソナライズ・アイビューティー。</p>
+                </div>
+
+                <!-- REST -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">REST</h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Relaxation</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最高の休息をご提案。リラクゼーション・スパメニュー。</p>
+                </div>
+
+                <!-- SSIN STUDIO -->
+                <div class="group block border-b border-grayscale-200 pb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-grayscale-900">SSIN STUDIO <span
+                                class="text-[10px] font-normal text-slate-400 ml-1">北九州小倉店</span></h3>
+                        <span
+                            class="text-[9px] font-bold text-slate-400 tracking-widest uppercase border border-slate-200 px-2 py-0.5 rounded">Artmake
+                            / Brow</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 leading-relaxed">最先端のアートメイク技術で、洗練された美しさを。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PC Footer -->
+    <footer class="bg-white pt-20 pb-10 border-t border-grayscale-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="text-3xl font-bold text-grayscale-900 mb-8 tracking-tighter">an・rata</div>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm text-slate-500">
+                <a href="index.html" class="hover:text-grayscale-900 transition-colors">HOME</a>
+                <a href="concept.html" class="hover:text-grayscale-900 transition-colors">CONCEPT</a>
+                <a href="menu.html" class="hover:text-grayscale-900 transition-colors">MENU</a>
+                <a href="recruit.html" class="hover:text-grayscale-900 transition-colors">RECRUIT</a>
+                <a href="news.html" class="hover:text-grayscale-900 transition-colors">NEWS</a>
+            </div>
+            <p class="text-xs text-slate-400">&copy; 2026 an・rata All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Footer Action Fixed (Mobile) -->
+    <div class="fixed bottom-0 left-0 w-full z-40 md:hidden flex border-t border-gray-200 bg-white/90 backdrop-blur-md">
+        <a href="tel:000-000-0000"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="phone" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">CALL / 電話予約</span>
+        </a>
+        <a href="#"
+            class="flex-1 py-4 flex flex-col items-center justify-center border-r border-gray-200 text-grayscale-900">
+            <i data-lucide="calendar" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">WEB / ネット予約</span>
+        </a>
+        <a href="recruit.html" class="flex-1 py-4 flex flex-col items-center justify-center bg-slate-400 text-white">
+            <i data-lucide="users" class="w-5 h-5 mb-1"></i>
+            <span class="text-[10px] font-bold">RECRUIT / 見学</span>
+        </a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const overlayCloseBtn = document.getElementById('overlay-close-btn');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenuOverlay.classList.add('active');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        overlayCloseBtn.addEventListener('click', toggleMenu);
+
+        // Close menu when clicking links
+        const menuLinks = mobileMenuOverlay.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuOverlay.classList.remove('active');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+                isMenuOpen = false;
+            });
+        });
+    </script>
+</body>
+
+</html>
